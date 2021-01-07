@@ -56,10 +56,10 @@ export default class Home extends Component {
     render() {
         return (
             <Fragment>
-                <div className='container-home'></div>
+                <div className='container-home'>
                 <div>{this.showResults()}</div>
+                </div>
             </Fragment>
-
         )
     }
 }
