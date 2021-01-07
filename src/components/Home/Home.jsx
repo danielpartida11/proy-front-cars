@@ -25,11 +25,41 @@ export default class Home extends Component {
         }
     }
 
+    showResults = () => {
+        if (this.state.cars[0]) {
+            return(
+                this.state.cars.map(car => {
+                    return(
+                        <Fragment>
+                            <div className='container-car' key={car.id}>
+                                {car.name}
+                                <img className='img-car' onClick={() => this.carSelection(car)} src={car.photo} alt={car.name}/>
+                            </div>
+                        </Fragment>
+                    )
+                })
+            )
+        } else{
+            return(
+                <div>
+                    CARGANDO COCHES...
+                </div>
+            )
+        }
+    }
+
+    carSelection = (car) => {
+        this.props.history.push('/cars')
+        localStorage.setItem('cardetails', JSON.stringify(car))
+    }
+
     render() {
         return (
-            <div className='Home'>
-                
-            </div>
+            <Fragment>
+                <div className='container-home'></div>
+                <div>{this.showResults()}</div>
+            </Fragment>
+
         )
     }
 }
