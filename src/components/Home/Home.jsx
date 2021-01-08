@@ -57,6 +57,16 @@ export default class Home extends Component {
         return (
             <Fragment>
                 <div className='container-home'>
+                <div>
+                    <Link className="link" to="/login">
+                        LOGIN
+                    </Link>
+                    <div>
+                    <Link className="link" to="/users">
+                        REGISTRATE
+                    </Link>
+                </div>
+                </div>
                 <div>{this.showResults()}</div>
                 </div>
             </Fragment>
