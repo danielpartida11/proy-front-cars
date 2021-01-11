@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 
 import './Home.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default class Home extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
 
         this.state = {
@@ -15,10 +15,10 @@ export default class Home extends Component {
         }
     }
 
-    async componentDidMount(){
+    async componentDidMount() {
         try {
             const peticionCars = await axios.get('http://localhost:8000/api/cars');
-            this.setState({cars: peticionCars.data});
+            this.setState({ cars: peticionCars.data });
             console.log(this.state.cars);
         } catch (error) {
             console.log(error);
@@ -27,20 +27,20 @@ export default class Home extends Component {
 
     showResults = () => {
         if (this.state.cars[0]) {
-            return(
+            return (
                 this.state.cars.map(car => {
-                    return(
+                    return (
                         <Fragment>
                             <div className='container-car' key={car.id}>
                                 {car.name}
-                                <img className='img-car' onClick={() => this.carSelection(car)} src={car.photo} alt={car.name}/>
+                                <img className='img-car' onClick={() => this.carSelection(car)} src={car.photo} alt={car.name} />
                             </div>
                         </Fragment>
                     )
                 })
             )
-        } else{
-            return(
+        } else {
+            return (
                 <div>
                     CARGANDO COCHES...
                 </div>
@@ -57,17 +57,17 @@ export default class Home extends Component {
         return (
             <Fragment>
                 <div className='container-home'>
-                <div>
+                    <div>
                     <Link className="link" to="/login">
                         LOGIN
                     </Link>
-                    <div>
-                    <Link className="link" to="/users">
+                    <div/>
+                    <Link className="link" to="/register">
                         REGISTRATE
                     </Link>
-                </div>
-                </div>
-                <div>{this.showResults()}</div>
+                    </div>
+
+                    <div>{this.showResults()}</div>
                 </div>
             </Fragment>
         )

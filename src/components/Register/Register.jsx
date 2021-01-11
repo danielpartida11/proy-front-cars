@@ -17,7 +17,7 @@ const Register = () => {
                 password: form.password.value,
             }
 
-            await axios.post('http://localhost:8000/api/users', user)
+            await axios.post('http://localhost:8000/api/register', user)
             alert("Usuario registrado")
             history.push('/')
 

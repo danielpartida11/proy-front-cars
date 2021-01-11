@@ -1,11 +1,10 @@
 import axios from 'axios';
 import './Login.css';
-import jwt from 'jwt-decode';
 
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Login = (props) => {
+const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
@@ -15,7 +14,7 @@ const Login = (props) => {
             event.preventDefault();
             const res = await axios.post('http://localhost:8000/api/login', { email, password })
             localStorage.setItem('token', res.data.sucess);
-            console.log(jwt(res.data.sucess));
+           // console.log(jwt(res.data.sucess));
             console.log(res);
             console.log(res.data);
             alert("Login OK")
